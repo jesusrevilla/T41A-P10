@@ -27,7 +27,7 @@ def db_connection():
 
 def test_query_data(db_connection):
     with db_connection.cursor() as cur:
-        with open("03_retrieve_everything_from_a_table.py", "r") as f:
+        with open("03_retrieve_everything_from_a_table.sql", "r") as f:
             query = f.read()
         cur.execute(query)
         results = cur.fetchall()
