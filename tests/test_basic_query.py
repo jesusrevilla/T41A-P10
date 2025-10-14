@@ -32,4 +32,3 @@ def test_query_data(db_connection):
         cur.execute(query)
         results = cur.fetchall()
         assert results == EXPECTED_RESULTS
-``
