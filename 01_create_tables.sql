@@ -73,13 +73,6 @@ CREATE TABLE members (
 );
 
 
---
--- TOC entry 2202 (class 0 OID 32818)
--- Dependencies: 171
--- Data for Name: bookings; Type: TABLE DATA; Schema: cd; Owner: -
---
-
-
 
 
 --
