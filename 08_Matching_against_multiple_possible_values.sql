@@ -1,1 +1,1 @@
-select * from cd.facilities where facid in (1,5);
+SELECT * FROM cd.facilities WHERE facid IN (1,5);
