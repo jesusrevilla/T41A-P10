@@ -1,1 +1,1 @@
-select * from cd.facilities where name like '%Tennis%';   
+SELECT * FROM cd.facilities WHERE name LIKE '%Tennis%';   
