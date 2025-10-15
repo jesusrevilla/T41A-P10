@@ -1,3 +1,3 @@
 SELECT *
 FROM cd.facilities
-WHERE name LIKE '%Tennis%';
+WHERE facid IN (1, 5);
