@@ -1,2 +1,2 @@
-select memid, surname, firstname, joindate from cd.members
-	where joindate >= '2012-09-01'; 
+SELECT memid, surname, firstname, joindate FROM cd.members
+	WHERE joindate >= '2012-09-01'; 
