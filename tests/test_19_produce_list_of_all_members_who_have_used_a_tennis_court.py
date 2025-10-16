@@ -107,3 +107,8 @@ def test_query_structure(db_connection):
         member_facility_pairs = [(row[0], row[1]) for row in results]
         sorted_pairs = sorted(member_facility_pairs)
         assert member_facility_pairs == sorted_pairs, "Los resultados deben estar ordenados por miembro y instalación"
+        
+        # Verificar que hay al menos algunas canchas de tenis diferentes
+        facilities = [row[1] for row in results]
+        unique_facilities = list(set(facilities))
+        assert len(unique_facilities) >= 2, "Debe haber al menos 2 canchas de tenis diferentes"

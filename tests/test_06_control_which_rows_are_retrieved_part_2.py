@@ -23,15 +23,25 @@ def test_query_structure(db_connection):
         # Verificar que la consulta devuelve resultados
         assert len(results) > 0, "La consulta debe devolver al menos un resultado"
         
-        # Verificar que cada fila tiene 4 columnas (facid, name, membercost, guestcost)
+        # Verificar que cada fila tiene 4 columnas (facid, name, membercost, monthlymaintenance)
         for row in results:
             assert len(row) == 4, f"Cada fila debe tener 4 columnas, pero se obtuvo {len(row)}"
             
-        # Verificar que los nombres contienen "Tennis Court"
-        tennis_courts = [row[1] for row in results if "Tennis Court" in row[1]]
-        assert len(tennis_courts) > 0, "Debe haber al menos una cancha de tenis en los resultados"
-        
-        # Verificar que los costos son numéricos
+        # Verificar que los costos son numéricos y cumplen la condición
         for row in results:
-            assert isinstance(row[2], (int, float)) or hasattr(row[2], 'as_tuple'), "membercost debe ser numérico"
-            assert isinstance(row[3], (int, float)) or hasattr(row[3], 'as_tuple'), "guestcost debe ser numérico"
+            facid, name, membercost, monthlymaintenance = row[0], row[1], row[2], row[3]
+            
+            # Convertir a float si es Decimal
+            if hasattr(membercost, 'as_tuple'):
+                membercost_val = float(membercost)
+            else:
+                membercost_val = float(membercost)
+                
+            if hasattr(monthlymaintenance, 'as_tuple'):
+                monthlymaintenance_val = float(monthlymaintenance)
+            else:
+                monthlymaintenance_val = float(monthlymaintenance)
+            
+            # Verificar la condición de la consulta: membercost > 0 AND membercost < monthlymaintenance / 50.0
+            assert membercost_val > 0, f"membercost debe ser mayor a 0, pero se obtuvo: {membercost_val}"
+            assert membercost_val < monthlymaintenance_val / 50.0, f"membercost debe ser menor que monthlymaintenance/50, pero se obtuvo: {membercost_val} >= {monthlymaintenance_val/50.0}"

@@ -38,3 +38,6 @@ def test_query_structure(db_connection):
         # Verificar que todos los apellidos son strings
         for surname in surnames:
             assert isinstance(surname, str), "Cada apellido debe ser un string"
+            
+        # Verificar que hay exactamente 10 resultados (LIMIT 10)
+        assert len(results) == 10, f"Debe haber exactamente 10 resultados (LIMIT 10), pero se obtuvo {len(results)}"

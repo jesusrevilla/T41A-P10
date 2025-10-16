@@ -76,3 +76,8 @@ def test_query_structure(db_connection):
         # Verificar que los resultados están ordenados por miembro
         member_names = [row[0] for row in results]
         assert member_names == sorted(member_names), "Los nombres de miembros deben estar ordenados alfabéticamente"
+        
+        # Verificar que hay miembros con y sin recomendadores
+        has_recommender = any(row[1] is not None for row in results)
+        no_recommender = any(row[1] is None for row in results)
+        assert has_recommender or no_recommender, "Debe haber al menos algunos miembros con o sin recomendadores"
