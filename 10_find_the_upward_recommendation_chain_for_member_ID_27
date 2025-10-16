@@ -1,0 +1,28 @@
+WITH RECURSIVE
+    recommender_chain (memid, firstname, surname, recommendedby)
+    AS
+    (
+        -- Anchor member: The member who recommended ID 27
+        SELECT mem.memid, mem.firstname, mem.surname, mem.recommendedby
+        FROM cd.members AS mem
+        WHERE mem.memid = (
+            SELECT recommendedby
+            FROM cd.members
+            WHERE memid = 27
+        )
+
+        UNION ALL
+
+        -- Recursive step: Find the person who recommended the current member in the chain
+        SELECT mem.memid, mem.firstname, mem.surname, mem.recommendedby
+        FROM cd.members AS mem
+        INNER JOIN recommender_chain AS rc
+            ON mem.memid = rc.recommendedby
+        WHERE rc.recommendedby IS NOT NULL AND rc.recommendedby != 0
+    )
+SELECT
+    memid AS recommender,
+    firstname,
+    surname
+FROM recommender_chain
+ORDER BY recommender DESC;
