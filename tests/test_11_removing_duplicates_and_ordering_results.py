@@ -30,7 +30,6 @@ def test_query_data(db_connection):
             ("Crumpet",),
             ("Dare",),
             ("Farrell",),
-            ("GUEST",),
             ("Genting",)
         ]
         

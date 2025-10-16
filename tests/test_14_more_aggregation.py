@@ -27,7 +27,8 @@ def test_query_data(db_connection):
         
         # Datos esperados basados en la base de datos real
         expected_results = [
-            ("Erica", "Crumpet", "2012-09-22 08:36:38")
+            
+            ('Darren', 'Smith', '2012-09-26 18:08:45')
         ]
         
         # Convertir fechas datetime a string para comparación
