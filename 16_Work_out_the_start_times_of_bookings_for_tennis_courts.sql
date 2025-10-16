@@ -1,0 +1,2 @@
+--How can you produce a list of the start times for bookings for tennis courts, for the date '2012-09-21'? Return a list of start time and facility name pairings, ordered by the time.
+SELECT bks.starttime AS start, facs.name AS name FROM cd.facilities facs INNER JOIN cd.bookings bks ON facs.facid = bks.facid WHERE facs.name IN ('Tennis Court 2','Tennis Court 1') AND bks.starttime >= '2012-09-21' AND bks.starttime < '2012-09-22' ORDER BY bks.starttime; 
