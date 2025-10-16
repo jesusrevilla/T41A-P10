@@ -1,2 +1,2 @@
-select firstname, surname, joindate
-from cd.members where joindate = (select max(joindate) from cd.members);
+SELECT firstname, surname, joindate
+FROM cd.members WHERE joindate = (SELECT max(joindate) FROM cd.members);
