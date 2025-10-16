@@ -11,7 +11,7 @@ EXPECTED_RESULTS = [
     (5, "Massage Room 2", 35, 80, 4000, 3000),
     (6, "Squash Court", 3.5, 17.5, 5000, 80),
     (7, "Snooker Table", 0, 5, 450, 15),
-    (8, "Pool Table", 0, 5, 400, 15),
+    (8, "Pool Table", 0, 5, 400, 15)
 ]
 
 @pytest.fixture(scope="module")
