@@ -1,0 +1,6 @@
+SELECT b.starttime
+FROM cd.bookings AS b
+JOIN cd.members  AS m ON b.memid = m.memid
+WHERE m.firstname = 'David'
+  AND m.surname   = 'Farrell'
+ORDER BY b.starttime;
