@@ -30,7 +30,8 @@ def test_query_data(db_connection):
             ("Crumpet",),
             ("Dare",),
             ("Farrell",),
-            ("Genting",)
+            ("Genting",),            
+            ("GUEST",),
         ]
         
         assert results == expected_results
