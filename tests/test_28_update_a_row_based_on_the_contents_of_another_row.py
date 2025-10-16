@@ -38,8 +38,9 @@ def test_update_row_based_on_another_row(db_connection):
         result = cur.fetchone()
         
         assert result is not None
-        expected_membercost = original_membercost * 1.1
-        expected_guestcost = original_guestcost * 1.1
+        # Convertir a float para evitar problemas con Decimal
+        expected_membercost = float(original_membercost) * 1.1
+        expected_guestcost = float(original_guestcost) * 1.1
         
-        assert abs(result[0] - expected_membercost) < 0.01  # membercost actualizado
-        assert abs(result[1] - expected_guestcost) < 0.01  # guestcost actualizado
+        assert abs(float(result[0]) - expected_membercost) < 0.01  # membercost actualizado
+        assert abs(float(result[1]) - expected_guestcost) < 0.01  # guestcost actualizado

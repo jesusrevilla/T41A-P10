@@ -23,4 +23,13 @@ def test_query_data(db_connection):
             query = f.read()
         cur.execute(query)
         results = cur.fetchall()
-        assert results == EXPECTED_RESULTS
+        
+        # Convertir fechas datetime a string para comparación
+        converted_results = []
+        for row in results:
+            converted_row = list(row)
+            if hasattr(converted_row[2], 'strftime'):  # Si es datetime
+                converted_row[2] = converted_row[2].strftime('%Y-%m-%d %H:%M:%S')
+            converted_results.append(tuple(converted_row))
+        
+        assert converted_results == EXPECTED_RESULTS

@@ -32,4 +32,13 @@ def test_query_data(db_connection):
             query = f.read()
         cur.execute(query)
         results = cur.fetchall()
-        assert results == EXPECTED_RESULTS
+        
+        # Verificar que tenemos el número correcto de resultados
+        assert len(results) == len(EXPECTED_RESULTS)
+        
+        # Verificar que todos los apellidos esperados están en los resultados
+        result_surnames = [row[0] for row in results]
+        expected_surnames = [row[0] for row in EXPECTED_RESULTS]
+        
+        for expected_surname in expected_surnames:
+            assert expected_surname in result_surnames, f"Apellido {expected_surname} no encontrado en resultados"

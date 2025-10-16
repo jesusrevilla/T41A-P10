@@ -24,4 +24,16 @@ def test_query_data(db_connection):
             query = f.read()
         cur.execute(query)
         results = cur.fetchall()
-        assert results == EXPECTED_RESULTS
+        
+        # Convertir Decimal a float para comparación
+        converted_results = []
+        for row in results:
+            converted_row = []
+            for item in row:
+                if hasattr(item, 'as_tuple'):  # Si es Decimal
+                    converted_row.append(float(item))
+                else:
+                    converted_row.append(item)
+            converted_results.append(tuple(converted_row))
+        
+        assert converted_results == EXPECTED_RESULTS
