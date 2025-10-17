@@ -1,6 +1,6 @@
-SELECT DISTINCT recomend.firstname as firstname, recomend.surname as surname
-	from 
+SELECT DISTINCT recomend.firstname AS firstname, recomend.surname AS surname
+	FROM 
 		cd.members members
-		inner join cd.members recomend
-			on recomend.memid = members.recommendedby
-order by surname, firstname; 
+		INNER JOIN cd.members recomend
+			ON recomend.memid = members.recommendedby
+ORDER BY surname, firstname; 
