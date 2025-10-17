@@ -1,0 +1,10 @@
+SELECT books.starttime AS start, facilities.name AS name
+	FROM 
+		cd.facilities facilities
+		INNER JOIN cd.bookings books
+			ON facilities.facid = books.facid
+	WHERE 
+		facilities.name in ('Tennis Court 2','Tennis Court 1') AND
+		books.starttime >= '2012-09-21' AND
+		books.starttime < '2012-09-22'
+ORDER BY books.starttime;    
