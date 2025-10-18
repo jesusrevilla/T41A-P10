@@ -1,0 +1,2 @@
+--Update some existing data
+UPDATE cd.facilities SET initialoutlay = 10000 WHERE facid = 1;
