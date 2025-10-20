@@ -1,3 +1,3 @@
---Retrieve specific columns from a table
---You want to print out a list of all of the facilities and their cost to members. How would you retrieve a list of only facility names and costs?
-select name, membercost from cd.facilities;          
+--Control which rows are retrieved
+--How can you produce a list of facilities that charge a fee to members?
+select * from cd.facilities where membercost > 0;          
