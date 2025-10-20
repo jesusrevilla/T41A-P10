@@ -1,0 +1,13 @@
+
+SELECT
+  member.firstname AS memfname,
+  member.surname AS memsname,
+  recommender.firstname AS recfname,
+  recommender.surname AS recsname
+FROM cd.members AS member
+LEFT JOIN cd.members AS recommender
+  ON member.recommendedby = recommender.memid
+ORDER BY
+  memsname,
+  memfname;
+  
