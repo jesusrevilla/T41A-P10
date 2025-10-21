@@ -1,0 +1,2 @@
+SELECT name AS nombre, membercost AS "costo de membresía" 
+FROM cd.facilities;
