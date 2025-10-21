@@ -1,0 +1,6 @@
+with recursive increment(num) as (
+	select 1
+	union all
+	select increment.num + 1 from increment where increment.num < 5
+)
+select * from increment;
