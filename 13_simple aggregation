@@ -1,0 +1,3 @@
+
+SELECT MAX(joindate) AS last_signup_date
+FROM cd.members;

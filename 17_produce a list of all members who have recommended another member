@@ -1,0 +1,10 @@
+
+SELECT DISTINCT
+  recommender.firstname,
+  recommender.surname
+FROM cd.members AS recommender
+INNER JOIN cd.members AS member
+  ON recommender.memid = member.recommendedby
+ORDER BY
+  recommender.surname,
+  recommender.firstname;  

@@ -1,0 +1,10 @@
+
+SELECT
+  bks.starttime AS start,
+  facs.name AS name
+FROM cd.bookings AS bks
+INNER JOIN cd.facilities AS facs
+  ON bks.facid = facs.facid
+WHERE
+  facs.name LIKE 'Tennis Court%' AND DATE(bks.starttime) = '2012-09-21'
+ORDER BY
