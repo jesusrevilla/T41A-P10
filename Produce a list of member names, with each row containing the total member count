@@ -1,0 +1,5 @@
+select count(*) over(partition by date_trunc('month',joindate) order by joindate asc), 
+	count(*) over(partition by date_trunc('month',joindate) order by joindate desc), 
+	firstname, surname
+	from cd.members
+order by joindate
