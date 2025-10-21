@@ -1,0 +1,23 @@
+WITH RECURSIVE recommendeds(memid) AS (
+    SELECT
+        memid
+    FROM
+        cd.members
+    WHERE
+        recommendedby = 1
+    UNION ALL
+    SELECT
+        m.memid
+    FROM
+        recommendeds r
+        INNER JOIN cd.members m ON m.recommendedby = r.memid
+)
+SELECT
+    r.memid,
+    m.firstname,
+    m.surname
+FROM
+    recommendeds r
+    INNER JOIN cd.members m ON r.memid = m.memid
+ORDER BY
+    r.memid;
