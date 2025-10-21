@@ -1,0 +1,2 @@
+--We want to remove member 37, who has never made a booking, from our database. How can we achieve that?
+  delete from cd.members where memid = 37;        
